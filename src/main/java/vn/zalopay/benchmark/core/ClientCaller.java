@@ -153,7 +153,6 @@ public class ClientCaller {
         try {
             dynamicClient.blockingUnaryCall(requestMessages, streamObserver, callOptions(deadline)).get();
         } catch (Throwable t) {
-            shutdownNettyChannel();
             throw new RuntimeException("Caught exception while waiting for rpc", t);
         }
         return output;
